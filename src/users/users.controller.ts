@@ -34,4 +34,5 @@ export class UsersController {
   remove(@Param('_id') _id: ObjectId) {
     return this.usersService.remove(_id);
   }
+  
 }
