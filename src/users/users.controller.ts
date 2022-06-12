@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IsString} from 'class-validator';
+import { ObjectId } from 'mongoose';
 
 @Controller('users')
 export class UsersController {
@@ -18,18 +19,20 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get(':name')
-  findOne(@Param('name') name: string) {
-    return this.usersService.findOne(name);
+  @Get(':_id')
+  findOne(@Param('_id') _id: ObjectId) {
+    return this.usersService.findOne(_id);
   }
 
-  @Put(':name')
-  update(@Param('name') name: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(name, updateUserDto);
+  @Put(':_id')
+  update(@Param('_id') _id: ObjectId, @Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.update(_id, updateUserDto);
   }
 
-  @Delete(':name')
-  remove(@Param('name') name: string) {
-    return this.usersService.remove(name);
+
+  @Delete(':_id')
+  remove(@Param('_id') _id: ObjectId) {
+    return this.usersService.remove(_id);
   }
+
 }

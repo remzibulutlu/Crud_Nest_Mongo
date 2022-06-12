@@ -1,15 +1,14 @@
 import { Param } from '@nestjs/common';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNumber, IsObject } from 'class-validator';
+import { ObjectId } from 'mongoose';
 
 export class CreateUserDto {
 
-    @IsString()
-    name: string;
+    @IsObject()
+    _id: ObjectId;
 }
 
-import { IsNumberString } from 'class-validator';
-
 export class FindOneParams {
-  @IsNumberString()
-  name: string;
+  @IsObject()
+  _id: ObjectId;
 }
